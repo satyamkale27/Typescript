@@ -47,27 +47,50 @@
 
 // printId("123");
 
-interface BusinessPartner {
-  name: string;
-  creditScore: number;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// interface BusinessPartner {
+//   name: string;
+//   creditScore: number;
+// }
+
+// interface UserIdentity {
+//   id: number;
+//   email: string;
+// }
+
+// type Employee = BusinessPartner & UserIdentity; // & meanse intersection
+
+// const signContract = (employee: Employee): void => {
+//   console.log(
+//     "Contract signed by " + employee.name + " with email: " + employee.email
+//   );
+// };
+
+// signContract({
+//   name: "Satyam",
+//   creditScore: 800,
+//   id: 34,
+//   email: "satyam@gmail.com",
+// });
+
+enum LoginError {
+  Unauthorizzed = "unauthorized",
+  NoUser = "nouser",
+  WrongCrdentials = "wrongcredentials",
+  Internal = "internal",
 }
 
-interface UserIdentity {
-  id: number;
-  email: string;
-}
-
-type Employee = BusinessPartner & UserIdentity; // & meanse intersection
-
-const signContract = (employee: Employee): void => {
-  console.log(
-    "Contract signed by " + employee.name + " with email: " + employee.email
-  );
+const printErrorMsg = (error: LoginError) => {
+  if (error == LoginError.Unauthorizzed) {
+    console.log("user not authorised");
+  } else if (error == LoginError.WrongCrdentials) {
+    console.log("Wrong crendientials");
+  } else if (error == LoginError.NoUser) {
+    console.log("No user was found with that username");
+  } else {
+    console.log("internal error");
+  }
 };
 
-signContract({
-  name: "Satyam",
-  creditScore: 800,
-  id: 34,
-  email: "satyam@gmail.com",
-});
+printErrorMsg(LoginError.WrongCrdentials);
