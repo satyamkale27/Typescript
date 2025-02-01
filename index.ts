@@ -37,3 +37,37 @@
 // } else {
 //   console.log(User.age);
 // }
+
+// type IDdfieldType = string | number;
+
+// const printId = (id: IDdfieldType) => {
+//   // it can be number and also a string, accepts both |(union)
+//   console.log("iD" + id);
+// };
+
+// printId("123");
+
+interface BusinessPartner {
+  name: string;
+  creditScore: number;
+}
+
+interface UserIdentity {
+  id: number;
+  email: string;
+}
+
+type Employee = BusinessPartner & UserIdentity; // & meanse intersection
+
+const signContract = (employee: Employee): void => {
+  console.log(
+    "Contract signed by " + employee.name + " with email: " + employee.email
+  );
+};
+
+signContract({
+  name: "Satyam",
+  creditScore: 800,
+  id: 34,
+  email: "satyam@gmail.com",
+});
