@@ -74,23 +74,45 @@
 //   email: "satyam@gmail.com",
 // });
 
-enum LoginError {
-  Unauthorizzed = "unauthorized",
-  NoUser = "nouser",
-  WrongCrdentials = "wrongcredentials",
-  Internal = "internal",
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// enum LoginError {
+//   Unauthorizzed = "unauthorized",
+//   NoUser = "nouser",
+//   WrongCrdentials = "wrongcredentials",
+//   Internal = "internal",
+// }
+
+// const printErrorMsg = (error: LoginError) => {
+//   if (error == LoginError.Unauthorizzed) {
+//     console.log("user not authorised");
+//   } else if (error == LoginError.WrongCrdentials) {
+//     console.log("Wrong crendientials");
+//   } else if (error == LoginError.NoUser) {
+//     console.log("No user was found with that username");
+//   } else {
+//     console.log("internal error");
+//   }
+// };
+
+// printErrorMsg(LoginError.WrongCrdentials);
+
+class StorageContainer<T> {
+  // T it is generic
+  private contents: T[];
+  constructor() {
+    this.contents = [];
+  }
+
+  addItem(item: T): void {
+    this.contents.push(item);
+  }
+
+  getItem(id: number): T | undefined {
+    return this.contents[id];
+  }
 }
 
-const printErrorMsg = (error: LoginError) => {
-  if (error == LoginError.Unauthorizzed) {
-    console.log("user not authorised");
-  } else if (error == LoginError.WrongCrdentials) {
-    console.log("Wrong crendientials");
-  } else if (error == LoginError.NoUser) {
-    console.log("No user was found with that username");
-  } else {
-    console.log("internal error");
-  }
-};
-
-printErrorMsg(LoginError.WrongCrdentials);
+const usernames = new StorageContainer<String>();
+usernames.addItem("satyam");
+console.log(usernames.getItem(0));
