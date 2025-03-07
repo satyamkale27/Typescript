@@ -2,6 +2,13 @@ class Vechicle {
   //   public drive(): void {
   //     console.log("chugga chugga");
   //   }
+
+  color: string;
+
+  constructor(color: string) {
+    this.color = color; // does initial assigment
+  }
+
   protected honk(): void {
     console.log("beep");
   }
@@ -18,9 +25,10 @@ class Carr extends Vechicle {
   }
 }
 
-// const vechicle = new Vechicle();
+const vechicle = new Vechicle("orange");
 // vechicle.drive();
 // vechicle.honk();
 
-const carrr = new Carr();
+const carrr = new Carr("orange");
 carrr.startDrivingProcess();
+console.log(carrr.color);
