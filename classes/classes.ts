@@ -15,6 +15,10 @@ class Vechicle {
 }
 
 class Carr extends Vechicle {
+  constructor(public wheels: number, color: string) {
+    // public wheels: number   creates public field wheels and assigns agrument to it in same line it is ts functionality
+    super(color);
+  }
   private drive(): void {
     console.log("vroom"); // overite the method in this class only(child class) // cant overwrite the access like private,public,protected
   }
@@ -29,6 +33,6 @@ const vechicle = new Vechicle("orange");
 // vechicle.drive();
 // vechicle.honk();
 
-const carrr = new Carr("orange");
+const carrr = new Carr(4, "orange");
 carrr.startDrivingProcess();
 console.log(carrr.color);
